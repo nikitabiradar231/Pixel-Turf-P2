@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useAccount, useConnect, useDisconnect, useSwitchChain, useChainId } from "wagmi";
-import { baseSepolia } from "wagmi/chains";
-import { BASE_SEPOLIA_CHAIN_ID, CANVAS_CONTRACT_ADDRESS } from "../config/contract";
+import { sepolia } from "wagmi/chains";
+import { SEPOLIA_CHAIN_ID, CANVAS_CONTRACT_ADDRESS } from "../config/contract";
 import { CooldownBadge } from "./CooldownBadge";
 import { Wallet, LogOut, AlertTriangle, ExternalLink, Sparkles, ChevronDown } from "lucide-react";
 
@@ -18,7 +18,7 @@ export const Navbar: React.FC<NavbarProps> = ({ remainingSeconds, cooldownDurati
   const { switchChain } = useSwitchChain();
   const [showConnectModal, setShowConnectModal] = useState(false);
 
-  const isWrongNetwork = isConnected && chainId !== BASE_SEPOLIA_CHAIN_ID;
+  const isWrongNetwork = isConnected && chainId !== SEPOLIA_CHAIN_ID;
 
   const shortenAddress = (addr: string) => {
     return `${addr.slice(0, 6)}...${addr.slice(-4)}`;
@@ -40,7 +40,7 @@ export const Navbar: React.FC<NavbarProps> = ({ remainingSeconds, cooldownDurati
                 PIXEL<span className="text-cyan-400">TURF</span>
               </h1>
               <span className="bg-blue-500/10 text-blue-400 border border-blue-500/30 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full">
-                Base Sepolia (84532)
+                Ethereum Sepolia (11155111)
               </span>
             </div>
           </div>
@@ -56,11 +56,11 @@ export const Navbar: React.FC<NavbarProps> = ({ remainingSeconds, cooldownDurati
 
           {isWrongNetwork ? (
             <button
-              onClick={() => switchChain({ chainId: baseSepolia.id })}
+              onClick={() => switchChain({ chainId: sepolia.id })}
               className="flex items-center gap-2 bg-amber-500/20 hover:bg-amber-500/30 border border-amber-500/40 text-amber-300 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all duration-150"
             >
               <AlertTriangle className="w-4 h-4 text-amber-400" />
-              <span>Switch to Base Sepolia</span>
+              <span>Switch to Ethereum Sepolia</span>
             </button>
           ) : isConnected && address ? (
             <div className="flex items-center gap-2 bg-slate-900 border border-slate-700/80 rounded-xl p-1 shadow-sm">
@@ -111,10 +111,10 @@ export const Navbar: React.FC<NavbarProps> = ({ remainingSeconds, cooldownDurati
 
           {CANVAS_CONTRACT_ADDRESS && CANVAS_CONTRACT_ADDRESS !== "0x0000000000000000000000000000000000000000" && (
             <a
-              href={`https://sepolia.basescan.org/address/${CANVAS_CONTRACT_ADDRESS}`}
+              href={`https://sepolia.etherscan.io/address/${CANVAS_CONTRACT_ADDRESS}`}
               target="_blank"
               rel="noreferrer"
-              title="View on BaseScan"
+              title="View on Etherscan"
               className="p-2 text-slate-400 hover:text-cyan-400 hover:bg-slate-800 rounded-xl border border-slate-800 transition-colors hidden md:flex items-center justify-center"
             >
               <ExternalLink className="w-4 h-4" />

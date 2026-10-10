@@ -44,9 +44,9 @@ export const ArchitectureInfo: React.FC = () => {
 
       {CANVAS_CONTRACT_ADDRESS && (
         <div className="mt-4 pt-3 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-2 text-xs font-mono text-slate-400">
-          <span>Base Sepolia Contract:</span>
+          <span>Ethereum Sepolia Contract:</span>
           <a
-            href={`https://sepolia.basescan.org/address/${CANVAS_CONTRACT_ADDRESS}`}
+            href={`https://sepolia.etherscan.io/address/${CANVAS_CONTRACT_ADDRESS}`}
             target="_blank"
             rel="noreferrer"
             className="text-cyan-400 hover:underline break-all"

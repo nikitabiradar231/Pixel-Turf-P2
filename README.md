@@ -1,12 +1,12 @@
 # Pixel Turf: A Canvas Nobody Can Wipe 🎨
 
-> **Road to Devcon VIII Challenge (P2)** — A production-quality, decentralized, cooldown-enforced shared pixel canvas built on **Base Sepolia (Chain ID 84532)**.
+> **Road to Devcon VIII Challenge (P2)** — A production-quality, decentralized, cooldown-enforced shared pixel canvas built on **Ethereum Sepolia (Chain ID 11155111)**.
 
 ---
 
 ## 🌟 Overview
 
-**Pixel Turf** is an immutable decentralized canvas governed entirely by a smart contract deployed on Base Sepolia. Every pixel placement is permanently etched into the blockchain, with state reconstruction powered by efficient historical event indexing and real-time live synchronization.
+**Pixel Turf** is an immutable decentralized canvas governed entirely by a smart contract deployed on Ethereum Sepolia. Every pixel placement is permanently etched into the blockchain, with state reconstruction powered by efficient historical event indexing and real-time live synchronization.
 
 ### Key Highlights
 - **100% Immutable Tile State:** There is **no owner**, **no admin backdoor**, **no reset function**, and **no wipe privilege**.
@@ -22,8 +22,10 @@
 
 | Parameter | Value | Description |
 | :--- | :--- | :--- |
-| **Network** | **Base Sepolia Testnet** | Ethereum L2 Testnet |
-| **Chain ID** | `84532` | Standard Base Sepolia chain identifier |
+| **Network** | **Ethereum Sepolia Testnet** | Ethereum L1 Testnet |
+| **Chain ID** | `11155111` | Standard Ethereum Sepolia chain identifier |
+| **Deployed Contract** | [`0x3d0b2722cf83266B8346D82c6b83B159a192717d`](https://sepolia.etherscan.io/address/0x3d0b2722cf83266B8346D82c6b83B159a192717d) | Verified on Ethereum Sepolia |
+| **Deployment Block** | `11882404` | Event indexing start block |
 | **Canvas Width** | `64` | Fixed width in pixels |
 | **Canvas Height** | `64` | Fixed height in pixels |
 | **Total Pixels** | `4,096` | Total individual tiles |
@@ -70,7 +72,7 @@ contract PixelTurf {
 
 | # | Acceptance Criterion | Score | Implementation Details & File Reference |
 |---|:---|:---:|:---|
-| **1** | **Base Sepolia Configuration** | 3 pts | Configured in [`frontend/src/config/wagmi.ts`](frontend/src/config/wagmi.ts) & [`frontend/src/config/contract.ts`](frontend/src/config/contract.ts) targeting Chain ID `84532` (`baseSepolia`). |
+| **1** | **Ethereum Sepolia Configuration** | 3 pts | Configured in [`frontend/src/config/wagmi.ts`](frontend/src/config/wagmi.ts) & [`frontend/src/config/contract.ts`](frontend/src/config/contract.ts) targeting Chain ID `11155111` (`sepolia`). |
 | **2** | **No Committed Credentials** | 5 pts | Checked via git review. `.env.example` contains only blank placeholders. Private keys and sensitive files are ignored in [`.gitignore`](.gitignore). |
 | **3** | **Contract Cooldown** | 15 pts | Enforced in [`src/PixelTurf.sol`](src/PixelTurf.sol#L50-L53) keyed by `msg.sender`. Tested in [`test/PixelTurf.t.sol`](test/PixelTurf.t.sol). |
 | **4** | **Bounds Checking** | 7 pts | Coordinate validation in [`src/PixelTurf.sol`](src/PixelTurf.sol#L45-L48) (`x >= WIDTH \|\| y >= HEIGHT`). Tested in [`test/PixelTurf.t.sol`](test/PixelTurf.t.sol). |
@@ -118,7 +120,7 @@ npm run dev
 
 ---
 
-## 🚀 Deployment to Base Sepolia
+## 🚀 Deployment to Ethereum Sepolia
 
 ### 1. Environment Setup
 
@@ -130,7 +132,7 @@ cp .env.example .env
 
 Populate the `.env` values:
 ```env
-BASE_SEPOLIA_RPC_URL=https://sepolia.base.org
+SEPOLIA_RPC_URL=https://ethereum-sepolia-rpc.publicnode.com
 PRIVATE_KEY=your_deployer_private_key_without_0x
 COOLDOWN_SECONDS=60
 ```
@@ -139,7 +141,7 @@ COOLDOWN_SECONDS=60
 
 ```bash
 forge script script/Deploy.s.sol:DeployScript \
-  --rpc-url $BASE_SEPOLIA_RPC_URL \
+  --rpc-url $SEPOLIA_RPC_URL \
   --broadcast \
   --verify
 ```
@@ -149,9 +151,9 @@ forge script script/Deploy.s.sol:DeployScript \
 Update `frontend/.env` with the deployed contract address and deployment block:
 
 ```env
-VITE_BASE_SEPOLIA_RPC_URL=https://sepolia.base.org
+VITE_SEPOLIA_RPC_URL=https://ethereum-sepolia-rpc.publicnode.com
 VITE_CANVAS_CONTRACT_ADDRESS=0xYourDeployedContractAddress
-VITE_CANVAS_DEPLOYMENT_BLOCK=12345678
+VITE_CANVAS_DEPLOYMENT_BLOCK=11882404
 ```
 
 ---

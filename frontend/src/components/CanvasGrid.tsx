@@ -281,7 +281,7 @@ export const CanvasGrid: React.FC<CanvasGridProps> = ({
       {isReconstructing && (
         <div className="absolute inset-0 bg-black/60 backdrop-blur-sm flex flex-col items-center justify-center text-white p-6 z-10">
           <div className="w-12 h-12 border-4 border-cyan-500/30 border-t-cyan-400 rounded-full animate-spin mb-4" />
-          <h3 className="text-lg font-bold tracking-wide">Syncing Canvas From Base Sepolia</h3>
+          <h3 className="text-lg font-bold tracking-wide">Syncing Canvas From Ethereum Sepolia</h3>
           <p className="text-sm text-slate-400 mt-1 max-w-sm text-center">
             Reconstructing pixel state from on-chain event logs...
           </p>

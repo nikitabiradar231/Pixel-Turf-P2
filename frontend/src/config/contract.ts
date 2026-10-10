@@ -1,9 +1,10 @@
 export const CANVAS_WIDTH = 64;
 export const CANVAS_HEIGHT = 64;
 export const TOTAL_PIXELS = CANVAS_WIDTH * CANVAS_HEIGHT;
-export const BASE_SEPOLIA_CHAIN_ID = 84532;
+export const SEPOLIA_CHAIN_ID = 11155111;
+export const BASE_SEPOLIA_CHAIN_ID = 11155111; // backward compatibility alias
 
-// Fallback or environment-configured contract address on Base Sepolia
+// Fallback or environment-configured contract address on Ethereum Sepolia
 export const CANVAS_CONTRACT_ADDRESS = (
   (import.meta.env.VITE_CANVAS_CONTRACT_ADDRESS as `0x${string}`) ||
   "0x0000000000000000000000000000000000000000"

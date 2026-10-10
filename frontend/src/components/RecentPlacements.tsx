@@ -50,7 +50,7 @@ export const RecentPlacements: React.FC<RecentPlacementsProps> = ({
                     <div className="flex items-center gap-1.5 font-mono text-slate-300 truncate">
                       <User className="w-3 h-3 text-slate-500 flex-shrink-0" />
                       <a
-                        href={`https://sepolia.basescan.org/address/${ev.player}`}
+                        href={`https://sepolia.etherscan.io/address/${ev.player}`}
                         target="_blank"
                         rel="noreferrer"
                         className="hover:text-cyan-400 hover:underline truncate"
@@ -66,7 +66,7 @@ export const RecentPlacements: React.FC<RecentPlacementsProps> = ({
 
                 <div className="flex items-center gap-2 flex-shrink-0">
                   <a
-                    href={`https://sepolia.basescan.org/tx/${ev.transactionHash}`}
+                    href={`https://sepolia.etherscan.io/tx/${ev.transactionHash}`}
                     target="_blank"
                     rel="noreferrer"
                     title="View Transaction"

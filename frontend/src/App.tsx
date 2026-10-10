@@ -87,7 +87,7 @@ export function App() {
 
       {/* Minimal Footer */}
       <footer className="w-full border-t border-slate-800/60 py-4 px-6 text-center text-xs font-mono text-slate-500">
-        Pixel Turf · Road to Devcon VIII Challenge · Base Sepolia (Chain ID 84532)
+        Pixel Turf · Road to Devcon VIII Challenge · Ethereum Sepolia (Chain ID 11155111)
       </footer>
     </div>
   );

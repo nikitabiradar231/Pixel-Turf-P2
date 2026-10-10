@@ -129,7 +129,7 @@ export const PlacementControls: React.FC<PlacementControlsProps> = ({
         {isSubmitting ? (
           <>
             <Loader2 className="w-4 h-4 animate-spin text-cyan-300" />
-            <span>{isWritePending ? "Confirm in Wallet..." : "Broadcasting to Base..."}</span>
+            <span>{isWritePending ? "Confirm in Wallet..." : "Broadcasting to Sepolia..."}</span>
           </>
         ) : !isConnected ? (
           <span>Connect Wallet to Paint</span>
@@ -150,10 +150,10 @@ export const PlacementControls: React.FC<PlacementControlsProps> = ({
         <div className="bg-emerald-950/60 border border-emerald-500/40 text-emerald-300 p-2.5 rounded-xl text-xs flex items-center justify-between">
           <div className="flex items-center gap-2">
             <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
-            <span className="font-semibold">Pixel painted on Base Sepolia!</span>
+            <span className="font-semibold">Pixel painted on Ethereum Sepolia!</span>
           </div>
           <a
-            href={`https://sepolia.basescan.org/tx/${txHash}`}
+            href={`https://sepolia.etherscan.io/tx/${txHash}`}
             target="_blank"
             rel="noreferrer"
             className="flex items-center gap-1 text-emerald-400 hover:underline font-mono"

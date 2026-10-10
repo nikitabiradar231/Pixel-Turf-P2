@@ -8,7 +8,13 @@ contract DeployScript is Script {
     function setUp() public {}
 
     function run() public returns (PixelTurf canvas) {
-        uint256 deployerPrivateKey = vm.envOr("PRIVATE_KEY", uint256(0));
+        uint256 deployerPrivateKey;
+        try vm.envUint("PRIVATE_KEY") returns (uint256 pk) {
+            deployerPrivateKey = pk;
+        } catch {
+            deployerPrivateKey = vm.envOr("PRIVATE_KEY", uint256(0));
+        }
+
         uint256 cooldown = vm.envOr("COOLDOWN_SECONDS", uint256(60));
 
         if (deployerPrivateKey != 0) {
